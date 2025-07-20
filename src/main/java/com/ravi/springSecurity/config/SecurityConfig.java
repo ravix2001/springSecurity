@@ -53,7 +53,7 @@ public class SecurityConfig {
 //                .httpBasic(Customizer.withDefaults())      // for restAPI access
 
                 // for JwtAuthentication
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);    //for JwtAuthentication
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
 
         return http.build();

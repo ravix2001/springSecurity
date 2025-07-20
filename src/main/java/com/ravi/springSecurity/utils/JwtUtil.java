@@ -15,7 +15,7 @@ public class JwtUtil {
 
     private String SECRET_KEY = "TaK+HaV^uvCHEFsEVfypW#7g9^k*Z8$V";
 
-    private static final long JWT_TOKEN_VALIDITY = 60 * 5;      // expiration time = 5 minutes
+    private static final long JWT_TOKEN_VALIDITY = (long) 1000 * 60 * 5;      // expiration time = 5 minutes
 
     private SecretKey getSigningKey(){
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
@@ -49,7 +49,7 @@ public class JwtUtil {
                 .header().empty().add("typ","JWT")
                 .and()
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() * 1000 + JWT_TOKEN_VALIDITY))
+                .expiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY))
                 .signWith(getSigningKey())
                 .compact();
     }
